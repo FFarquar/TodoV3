@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 
 //let listName = "All items";
-var listName = "";
+let listName = "";
 
 
 const itemsSchema = new mongoose.Schema({
@@ -35,7 +35,7 @@ app.get("/", async function(req, res) {
   console.log("In default get");
   const lists = await Item_m.distinct("list", {"deleted":"false"});
   //want to have the first list selected if 
-  console.log(" ListName variable = " + listName);
+  console.log(" listName variable = " + listName);
   if (listName =="") {
     console.log("Listname is blank");
     //find the first and select it
@@ -139,7 +139,7 @@ app.post("/addnewList", async function (req, res)  {
 app.get("/list/:list", async function (req, res)  {
   //get a different list
   
-  let listName = req.params.list;
+  listName = req.params.list;
   console.log("Different list requested  app.get(/list/:list"  + listName);
   console.log("listName variable  =  " + listName);
   res.redirect("/");
