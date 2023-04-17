@@ -139,7 +139,7 @@ app.post("/addnewList", async function (req, res)  {
 app.get("/list/:list", async function (req, res)  {
   //get a different list
   
-  listName = req.params.list;
+  let listName = req.params.list;
   console.log("Different list requested  app.get(/list/:list"  + listName);
   console.log("listName variable  =  " + listName);
   res.redirect("/");
