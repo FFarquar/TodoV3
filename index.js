@@ -166,6 +166,7 @@ app.get("/list/:list", async function (req, res)  {
 //   res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
 
   res.redirect("/");
+  return;
 });
 
 //app.get("/itemChangeCheckedStatus/:item", function (req, res)  {
