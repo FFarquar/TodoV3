@@ -155,11 +155,18 @@ app.get("/list/:list", async function (req, res)  {
   
   console.log("In app.get(/list/:list ");
   console.log("   req.params.list = "  + req.params.list);
-  
+
   listName = req.params.list;
-  console.log("Different list requested  app.get(/list/:list"  + listName);
+  //console.log("Different list requested  app.get(/list/:list"  + listName);
   console.log("listName variable  =  " + listName);
-  res.redirect("/");
+
+  const items = await Item_m.find({list:listName, deleted:false});
+        
+//  console.log("List name not blank it =" + listName);
+
+  res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
+
+  //res.redirect("/");
 });
 
 //app.get("/itemChangeCheckedStatus/:item", function (req, res)  {
