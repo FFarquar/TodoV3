@@ -45,7 +45,7 @@ const Item_m = mongoose.model("Item", itemsSchema);
 
 
 app.get("/", async function(req, res) {
-  console.log("In default get");
+  console.log("In home get");
   const lists = await Item_m.distinct("list", {"deleted":"false"});
   //want to have the first list selected if 
   console.log(" listName variable = " + listName);
