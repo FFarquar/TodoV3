@@ -18,7 +18,6 @@ app.use(express.static("public"));
 
 const db = async () => {
   try {
-
     console.log("In db conn before setting connection. Listname = " + listName);
     const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/test');
     console.log("In db conn after setting connection. Listname = " + listName);
@@ -26,7 +25,7 @@ const db = async () => {
       
     } catch (error) {
     console.log(error);
-    preocces.exit(1);
+    process.exit(1);
   }
 }
 
@@ -166,7 +165,7 @@ app.get("/list/:list", async function (req, res)  {
 //   res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
 
   res.redirect("/");
-  return;
+
 });
 
 //app.get("/itemChangeCheckedStatus/:item", function (req, res)  {
@@ -243,18 +242,17 @@ app.post("/itemChange", async function (req, res)  {
 
 
 
- db().then(() => {
+/*  db().then(() => {
     console.log("In app listen before app.listen Listname = " + listName);
      app.listen(process.env.PORT || 3000, function(){
       console.log("In app listen after app.listen Listname = " + listName);
        console.log("server is running on port "+ PORT)
      })
- });
+ }); */
 
 
-/* db().then(() => {
-  app.listen(process.env.PORT, ()=> {
-    console.log("server is running on port "+ process.env.PORT)
+db().then(() => {
+  app.listen(PORT, ()=> {
+    console.log("Listening for requests");
   })
 });
- */
