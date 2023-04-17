@@ -234,8 +234,15 @@ app.post("/itemChange", async function (req, res)  {
 
 
 
+// db().then(() => {
+//     app.listen(process.env.PORT || 3000, function(){
+//       console.log("server is running on port "+ PORT)
+//     })
+// });
+
+
 db().then(() => {
-    app.listen(process.env.PORT || 3000, function(){
-      console.log("server is running on port "+ PORT)
-    })
+  app.listen(process.env.PORT, ()=> {
+    console.log("server is running on port "+ process.env.PORT)
+  })
 });
