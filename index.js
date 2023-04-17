@@ -19,8 +19,9 @@ app.use(express.static("public"));
 const db = async () => {
   try {
 
+    console.log("In db conn before setting connection. Listname = " + listName);
     const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/test');
-    
+    console.log("In db conn after setting connection. Listname = " + listName);
     console.log("MonoDB Connected: " + conn.connection.host);
       
     } catch (error) {
@@ -242,7 +243,9 @@ app.post("/itemChange", async function (req, res)  {
 
 
  db().then(() => {
+    console.log("In app listen before app.listen Listname = " + listName);
      app.listen(process.env.PORT || 3000, function(){
+      console.log("In app listen after app.listen Listname = " + listName);
        console.log("server is running on port "+ PORT)
      })
  });
