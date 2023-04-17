@@ -52,7 +52,7 @@ app.get("/", async function(req, res) {
     } else {
       //if there are no lists, go to the create new list page
 
-      //note: this hasnt been tested as database 
+       //note: this hasnt been tested as database has records.
       res.render("newList", {listWarning: undefined, item: undefined});
     }
   } else {
