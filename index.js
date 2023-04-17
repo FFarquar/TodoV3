@@ -51,21 +51,18 @@ app.get("/", async function(req, res) {
   
     } else {
       //if there are no lists, go to the create new list page
-
+      console.log("No lists found");
        //note: this hasnt been tested as database has records.
       res.render("newList", {listWarning: undefined, item: undefined});
     }
   } else {
 
     const items = await Item_m.find({list:listName, deleted:false});
-    //const lists = await Item_m.distinct("list");
-    
-    //console.log("uniqueLists = " + lists);
+        
+    console.log("List name not blank it =" + listName);
   
     res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
-
   }
-
 
 });
 
@@ -75,7 +72,7 @@ app.post("/", async function(req, res){
 
   console.log("Item text = " + item);
 
-  //listname is a stored variable
+  //listName is a stored variable
   const newItem = await Item_m.create({ list: listName, name: item, "$set":{"checked":false}, "$set":{"deleted":false}})
   .then(function (newItem) {
     res.redirect("/");
@@ -141,7 +138,9 @@ app.post("/addnewList", async function (req, res)  {
 
 app.get("/list/:list", async function (req, res)  {
   //get a different list
+  
   listName = req.params.list;
+  console.log("Different list requested  app.get(/list/:list"  + listName);
  // console.log("Req params  " + listName);
   res.redirect("/");
 });
