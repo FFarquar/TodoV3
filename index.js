@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 
 //let listName = "All items";
-let listName = "";
+let listName;
 
 
 const itemsSchema = new mongoose.Schema({
@@ -70,7 +70,8 @@ app.post("/", async function(req, res){
 
   const item = req.body.newItem;
 
-  console.log("Item text = " + item);
+  console.log("Posting new item.  Item text = " + item);
+  console.log("Posting new item.  List name = " + listName);
 
   //listName is a stored variable
   const newItem = await Item_m.create({ list: listName, name: item, "$set":{"checked":false}, "$set":{"deleted":false}})
