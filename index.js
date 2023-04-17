@@ -16,6 +16,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
+const db = async () => {
+  try {
+
+    const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/test');
+    
+    console.log("MonoDB Connected: " + conn.connection.host);
+      
+    } catch (error) {
+    console.log(error);
+    preocces.exit(1);
+  }
+}
+
 //let listName = "All items";
 let listName;
 
@@ -220,18 +233,6 @@ app.post("/itemChange", async function (req, res)  {
 
 
 
-const db = async () => {
-    try {
-
-      const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/test');
-      
-      console.log("MonoDB Connected: " + conn.connection.host);
-        
-      } catch (error) {
-      console.log(error);
-      preocces.exit(1);
-    }
-}
 
 db().then(() => {
     app.listen(process.env.PORT || 3000, function(){
