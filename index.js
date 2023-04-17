@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 
 //let listName = "All items";
-let listName = "";
+var listName = "";
 
 
 const itemsSchema = new mongoose.Schema({
