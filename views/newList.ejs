@@ -1,0 +1,29 @@
+<%- include("header") -%>
+<div class="box" id="heading">
+    <h1> Add a new list </h1>
+</div>
+
+
+<form class="item" action="/addnewlist" method="post">
+    <div class="box">
+
+        <% if (listWarning  != undefined) { %>
+            <p style="background-color:red;"> List Exists!!! </p>
+        <%} else { %>
+
+        <% } %>
+
+        <label for="listname">List name:</label>
+        <input type="text" id="listname" name="listname"  autocomplete="off" value=<%=listWarning %>>
+
+        <label for="newItem">Item:</label>
+        <input type="text" id="newItem" name="newItem"  autocomplete="off" value=<%=item %>>
+
+
+        <input type="submit" value="Submit">
+    </div>
+</form>
+
+
+    
+<%- include("footer") -%>x
