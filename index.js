@@ -164,6 +164,7 @@ app.get("/list/:list", async function (req, res)  {
         
 //  console.log("List name not blank it =" + listName);
   const lists = await Item_m.distinct("list", {"deleted":"false"});
+  console.log("Rendering list directly from list/:list");
   res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
 
   //res.redirect("/");
