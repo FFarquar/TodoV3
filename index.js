@@ -141,13 +141,8 @@ app.post("/addnewList", async function (req, res)  {
       .catch(function (err) {
         console.log(err);
       });
-    
     }
-
-  }
-
-
-  
+  } 
 });
 
 app.get("/list/:list", async function (req, res)  {
@@ -160,14 +155,16 @@ app.get("/list/:list", async function (req, res)  {
   //console.log("Different list requested  app.get(/list/:list"  + listName);
   console.log("listName variable  =  " + listName);
 
-  const items = await Item_m.find({list:listName, deleted:false});
+//   const items = await Item_m.find({list:listName, deleted:false});
         
-//  console.log("List name not blank it =" + listName);
-  const lists = await Item_m.distinct("list", {"deleted":"false"});
-  console.log("Rendering list directly from list/:list");
-  res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
+// //  console.log("List name not blank it =" + listName);
+//   const lists = await Item_m.distinct("list", {"deleted":"false"});
 
-  //res.redirect("/");
+//   console.log("Rendering list directly from list/:list");
+  
+//   res.render("simple_list_test", {listTitle: listName, newListItems: items, uniqueLists:lists});
+
+  res.redirect("/");
 });
 
 //app.get("/itemChangeCheckedStatus/:item", function (req, res)  {
@@ -244,15 +241,16 @@ app.post("/itemChange", async function (req, res)  {
 
 
 
-// db().then(() => {
-//     app.listen(process.env.PORT || 3000, function(){
-//       console.log("server is running on port "+ PORT)
-//     })
-// });
+ db().then(() => {
+     app.listen(process.env.PORT || 3000, function(){
+       console.log("server is running on port "+ PORT)
+     })
+ });
 
 
-db().then(() => {
+/* db().then(() => {
   app.listen(process.env.PORT, ()=> {
     console.log("server is running on port "+ process.env.PORT)
   })
 });
+ */
