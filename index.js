@@ -36,7 +36,7 @@ app.get("/", async function(req, res) {
   const lists = await Item_m.distinct("list", {"deleted":"false"});
   //want to have the first list selected if 
   console.log(" listName variable = " + listName);
-  if (listName =="") {
+  if (listName ==undefined) {
     console.log("Listname is blank");
     //find the first and select it
     if (lists.length > 0) {
