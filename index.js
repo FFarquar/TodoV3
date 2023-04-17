@@ -41,7 +41,6 @@ app.get("/", async function(req, res) {
     //find the first and select it
     if (lists.length > 0) {
       //there is a list to select from
-      lists.i
       console.log("Setting list name to " + lists[0]);
       listName = lists[0];
 
@@ -53,7 +52,7 @@ app.get("/", async function(req, res) {
     } else {
       //if there are no lists, go to the create new list page
 
-      //note: this hasnt been tested as database has records.
+      //note: this hasnt been tested as database 
       res.render("newList", {listWarning: undefined, item: undefined});
     }
   } else {
