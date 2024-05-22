@@ -16,23 +16,45 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+require('dotenv').config();
+
+// const db = async () => {
+//   try {
+//     //console.log("In db conn before setting connection. Listname = " + listName);
+//     //live site
+//     const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/test');
+
+
+//     //loocal site
+//     //const conn = await mongoose.connect('mongodb://127.0.0.1/test');
+//     //console.log("In db conn after setting connection. Listname = " + listName);
+//     console.log("MonoDB Connected: " + conn.connection.host);
+
+//   } catch (error) {
+//     console.log(error);
+//     process.exit(1);
+//   }
+// }
 
 const db = async () => {
   try {
-    //console.log("In db conn before setting connection. Listname = " + listName);
-    //live site
-    const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/test');
 
 
-    //loocal site
-    //const conn = await mongoose.connect('mongodb://127.0.0.1/test');
-    //console.log("In db conn after setting connection. Listname = " + listName);
-    console.log("MonoDB Connected: " + conn.connection.host);
+    const dbstring = "mongodb+srv://" + process.env.MongoDB_User + ":" + process.env.MongoDB_Password + "@" + process.env.MongoDB_Cluster + "/" + process.env.MongoDB_DB_Name;
+
+    const conn = await mongoose.connect(dbstring);
+
+
+    //const conn = await mongoose.connect('mongodb+srv://DD_1:DD_1_PW@cluster1.eiy6kz9.mongodb.net/BikeDB');
+    module.exports = conn;
+
+    console.log("MonoDB Connected: " + await conn.connection.host);
 
   } catch (error) {
     console.log(error);
     process.exit(1);
   }
+
 }
 
 //let listName = "All items";
