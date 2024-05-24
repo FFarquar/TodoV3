@@ -11,7 +11,7 @@ h1 {
 }
 
 .box {
-  max-width: 400px;
+  max-width: 600px;
   margin: 50px auto;
   background: white;
   border-radius: 5px;
@@ -24,12 +24,36 @@ h1 {
 }
 
 .item {
-  min-height: 70px;
+  /* min-height: 80px; */
   display: flex;
   align-items: center;
-  /* border-bottom: 1px solid #F1F1F1; */
-  border: 2px dashed black;
 
+  border: 2px solid black;
+  margin: 12px;
+}
+
+/* List names in the list drop down */
+.item-list,
+.item-list-last {
+  margin: 4px;
+  padding: 6px;
+  /* min-height: 70px; */
+  display: flex;
+  align-items: center;
+
+  /* border-bottom: 1px solid #F1F1F1; */
+  border: 2px solid black;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
+
+}
+
+.item-list-last {
+  /* background-color: green; */
+  box-shadow: 0 14px 14px rgba(153, 17, 17, 0.8);
+}
+
+.item-list-last:hover {
+  cursor: crosshair;
 }
 
 .item:last-child {
@@ -152,6 +176,7 @@ input[type="radio"]:checked::before {
   /* border: 1px dotted lime; */
   border: none;
   resize: none;
+  width: 80%;
 }
 
 .updateButtonImage {
@@ -161,9 +186,8 @@ input[type="radio"]:checked::before {
   border-style: none;
 }
 
-/* .editText { */
-/* height: 25px; */
-/* width: 25px;
-
-  border-style: none;
+/* Practiciting What I learnt in the CSS lesson */
+.listTitle {
+  background-color: white;
+  font-weight: 400;
 }

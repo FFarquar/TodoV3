@@ -129,12 +129,11 @@ app.post("/", async function (req, res) {
 
 });
 
-// Dont think this is needed anymore
-// app.get("/addnewList", function (req, res) {
-//   //create a new list with a new item in the list
-//   console.log("creating new list");
-//   res.render("newList", { listWarning: undefined, item: undefined });
-// });
+app.get("/addnewList", function (req, res) {
+  //create a new list with a new item in the list
+  console.log("creating new list");
+  res.render("newList", { listWarning: undefined, item: undefined });
+});
 
 app.post("/addnewList", async function (req, res) {
   //add new list and item
